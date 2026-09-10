@@ -95,10 +95,14 @@ nav { position: relative; z-index: 20; padding: 24px; }
 /* ── Escalera ── */
 .escalera-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: end; margin-top: 24px; }
 .escalera-card { display: flex; flex-direction: column; }
-.e1 { min-height: 380px; }
-.e2 { min-height: 440px; }
-.e3 { min-height: 500px; }
-.e4 { min-height: 560px; }
+[data-mode="negocios"] .e1 { min-height: 600px; }
+[data-mode="negocios"] .e2 { min-height: 640px; }
+[data-mode="negocios"] .e3 { min-height: 680px; }
+[data-mode="negocios"] .e4 { min-height: 720px; }
+[data-mode="academia"] .e1 { min-height: 720px; }
+[data-mode="academia"] .e2 { min-height: 780px; }
+[data-mode="academia"] .e3 { min-height: 840px; }
+[data-mode="academia"] .e4 { min-height: 900px; }
 .esc-nivel { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 10px; }
 .esc-horas { font-family: var(--font-display); font-size: 2.6rem; line-height: 1; margin-bottom: 4px; }
 .esc-horas small { font-size: 1rem; color: rgba(255,255,255,0.45); font-family: var(--font-body); font-style: italic; }
@@ -629,10 +633,12 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
 </div>
 
 <script>
-const MAILTO = {
-  negocios: 'mailto:mara.pronvenzano@gmail.com?subject=Formaci%C3%B3n%20IA%20para%20nuestra%20organizaci%C3%B3n',
-  academia: 'mailto:mara.pronvenzano@gmail.com?subject=IA%20para%20acelerar%20la%20ciencia%20en%20nuestra%20instituci%C3%B3n'
+const WA_NUM = '5492477670139';
+const WA_TEXT = {
+  negocios: 'Hola! Nos interesa la formaci%C3%B3n en IA para nuestra organizaci%C3%B3n.',
+  academia: 'Hola! Nos interesa IA para acelerar la ciencia en nuestra instituci%C3%B3n.'
 };
+const WA_LINK = m => 'https://wa.me/' + WA_NUM + '?text=' + WA_TEXT[m];
 
 function setMode(mode) {
   document.querySelectorAll('[data-mode]').forEach(el => {
@@ -641,11 +647,16 @@ function setMode(mode) {
   });
   document.getElementById('opt-negocios').classList.toggle('active', mode === 'negocios');
   document.getElementById('opt-academia').classList.toggle('active', mode === 'academia');
-  document.querySelectorAll('.mailto-cta, #nav-cta').forEach(a => a.href = MAILTO[mode]);
+  document.querySelectorAll('.mailto-cta, #nav-cta').forEach(a => a.href = WA_LINK(mode));
+  a_target();
   document.title = mode === 'academia'
     ? 'IA para Acelerar la Ciencia — IA × Ciencia en Colombia'
     : 'IA × Ciencia Colombia — Formación en IA que termina con algo hecho';
   try { localStorage.setItem('iacx-mode', mode); } catch (e) {}
+}
+
+function a_target() {
+  document.querySelectorAll('.mailto-cta, #nav-cta').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
 }
 
 (function () {
