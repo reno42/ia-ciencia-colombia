@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IA × Ciencia Colombia — Formación en IA que termina con algo hecho</title>
-<meta name="description" content="Programas de inteligencia artificial aplicada para organizaciones en Colombia. Una iniciativa de NETI (Argentina) × Futuraria (Perú).">
+<meta name="description" content="Programas de inteligencia artificial aplicada para organizaciones y universidades en Colombia. Una iniciativa de NETI (Argentina) × Futuraria (Perú).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -19,6 +19,7 @@
 html { scroll-behavior: smooth; }
 body { background: #000; color: #fff; font-family: var(--font-body); line-height: 1.6; overflow-x: hidden; }
 .page-wrap { position: relative; min-height: 100vh; background: #000; overflow: hidden; }
+[data-mode].hidden-mode { display: none !important; }
 
 /* ── Liquid Glass ── */
 .liquid-glass {
@@ -60,20 +61,26 @@ section { padding: 100px 24px; position: relative; }
 
 /* ── Nav ── */
 nav { position: relative; z-index: 20; padding: 24px; }
-.nav-inner { border-radius: 9999px; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; max-width: 80rem; margin: 0 auto; width: 100%; }
+.nav-inner { border-radius: 9999px; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; max-width: 80rem; margin: 0 auto; width: 100%; gap: 12px; }
 .logo-area { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 600; font-size: 1.125rem; text-decoration: none; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
 .logo-area:hover { transform: scale(1.05); }
 .logo-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
 .nav-right { display: flex; align-items: center; gap: 1rem; }
 .nav-kicker { font-size: 0.72rem; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; }
 
+/* ── Mode Switch ── */
+.mode-switch { display: flex; background: rgba(255,255,255,0.05); border-radius: 100px; padding: 3px; gap: 2px; }
+.mode-opt { padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; font-weight: 600; cursor: pointer; border: none; background: none; color: rgba(255,255,255,0.45); font-family: inherit; transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1); white-space: nowrap; }
+.mode-opt:hover:not(.active) { color: rgba(255,255,255,0.75); }
+.mode-opt.active { background: var(--accent); color: #000; }
+
 /* ── Hero ── */
 .hero-glow { position: absolute; top: -240px; left: 50%; transform: translateX(-50%); width: 900px; height: 600px; background: radial-gradient(ellipse at center, rgba(16,185,129,0.14) 0%, rgba(59,130,246,0.06) 40%, transparent 70%); z-index: 0; pointer-events: none; }
 .hero-content { position: relative; z-index: 10; min-height: 82vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 24px; text-align: center; }
 .hero-kicker { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-.hero-heading { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5rem); color: #fff; margin-bottom: 1.5rem; letter-spacing: -0.02em; line-height: 1.1; max-width: 900px; }
+.hero-heading { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5rem); color: #fff; margin-bottom: 1.5rem; letter-spacing: -0.02em; line-height: 1.1; max-width: 940px; }
 .hero-heading em { font-style: italic; color: var(--accent); }
-.hero-subtitle { color: rgba(255,255,255,0.7); font-size: clamp(1rem, 1.5vw, 1.15rem); max-width: 620px; margin: 0 auto 2.5rem auto; line-height: 1.7; }
+.hero-subtitle { color: rgba(255,255,255,0.7); font-size: clamp(1rem, 1.5vw, 1.15rem); max-width: 640px; margin: 0 auto 2.5rem auto; line-height: 1.7; }
 .hero-stats { display: flex; gap: 48px; margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; justify-content: center; }
 .hero-stat .number { font-family: var(--font-display); font-size: 2.2rem; color: #fff; }
 .hero-stat .label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
@@ -85,7 +92,7 @@ nav { position: relative; z-index: 20; padding: 24px; }
 .metodo-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
 .metodo-card p { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
 
-/* ── Escalera de cursos ── */
+/* ── Escalera ── */
 .escalera-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: end; margin-top: 24px; }
 .escalera-card { display: flex; flex-direction: column; }
 .e1 { min-height: 380px; }
@@ -96,7 +103,7 @@ nav { position: relative; z-index: 20; padding: 24px; }
 .esc-horas { font-family: var(--font-display); font-size: 2.6rem; line-height: 1; margin-bottom: 4px; }
 .esc-horas small { font-size: 1rem; color: rgba(255,255,255,0.45); font-family: var(--font-body); font-style: italic; }
 .esc-nombre { font-size: 0.95rem; font-weight: 600; margin: 10px 0 6px; }
-.esc-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 16px; flex-grow: 0; }
+.esc-tagline { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 16px; }
 .esc-io { font-size: 0.78rem; line-height: 1.6; padding: 14px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 14px; }
 .esc-io .io-row { display: flex; gap: 8px; margin-bottom: 8px; }
 .esc-io .io-row:last-child { margin-bottom: 0; }
@@ -108,7 +115,25 @@ nav { position: relative; z-index: 20; padding: 24px; }
 .esc-precio .p-unit { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
 .esc-badge { position: absolute; top: 18px; right: 18px; font-size: 9px; padding: 3px 10px; border-radius: 100px; background: rgba(16,185,129,0.12); color: var(--accent); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
 
-/* ── Catálogo extra ── */
+/* ── Rutas ── */
+.rutas-track { display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+.ruta-card { flex: 1 1 180px; max-width: 240px; text-align: center; padding: 28px 20px; }
+.ruta-letter { font-family: var(--font-display); font-size: 2.4rem; color: var(--accent); line-height: 1; }
+.ruta-card h3 { font-size: 0.95rem; font-weight: 600; margin: 10px 0 6px; }
+.ruta-card p { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.rutas-arrow { color: rgba(255,255,255,0.15); font-size: 1.2rem; align-self: center; }
+
+/* ── Catálogo ── */
+.catalogo-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.catalogo-col h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 6px; }
+.catalogo-col .col-sub { font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-bottom: 20px; }
+.cat-item { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cat-item:last-child { border-bottom: none; }
+.cat-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+.cat-item h4 span { color: var(--accent); font-size: 0.72rem; margin-left: 8px; letter-spacing: 1px; }
+.cat-item p { font-size: 0.8rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+/* ── Extras ── */
 .extra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .extra-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
 .extra-card h3 span { color: var(--accent); margin-right: 8px; }
@@ -131,22 +156,24 @@ nav { position: relative; z-index: 20; padding: 24px; }
 .quienes-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
 .quienes-logo { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 10px; }
 
-/* ── CTA final ── */
+/* ── CTA ── */
 .cta-section { text-align: center; padding: 140px 24px; }
 .cta-section h2 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 16px; }
-.cta-section p { color: rgba(255,255,255,0.5); font-size: 1.1rem; max-width: 520px; margin: 0 auto 36px; }
+.cta-section p { color: rgba(255,255,255,0.5); font-size: 1.1rem; max-width: 540px; margin: 0 auto 36px; }
 
 footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
 
 @media (max-width: 900px) {
   .escalera-grid { grid-template-columns: 1fr 1fr; }
   .e1, .e2, .e3, .e4 { min-height: auto; }
+  .catalogo-cols { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   section { padding: 60px 16px; }
   .escalera-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 24px; }
   .nav-kicker { display: none; }
+  .nav-inner { flex-wrap: wrap; justify-content: center; }
 }
 </style>
 </head>
@@ -159,19 +186,23 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
       <a class="logo-area" href="#"><span class="logo-dot"></span> IA × Ciencia</a>
       <span class="nav-kicker">NETI × Futuraria · Colombia</span>
       <div class="nav-right">
-        <a class="cta-btn cta-accent" href="mailto:mara.pronvenzano@gmail.com?subject=Formación%20IA%20para%20nuestra%20organización">Conversemos</a>
+        <div class="mode-switch" role="tablist" aria-label="Tipo de audiencia">
+          <button class="mode-opt" id="opt-negocios" onclick="setMode('negocios')">Negocios</button>
+          <button class="mode-opt" id="opt-academia" onclick="setMode('academia')">Academia</button>
+        </div>
+        <a class="cta-btn cta-accent" id="nav-cta" href="#">Conversemos</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="hero-content">
+  <!-- ══════════ HERO NEGOCIOS ══════════ -->
+  <header class="hero-content" data-mode="negocios">
     <div class="hero-kicker">Una iniciativa de NETI (Argentina) × Futuraria (Perú)</div>
     <h1 class="hero-heading">Formación en IA que termina con <em>algo hecho</em>, no con un PDF.</h1>
     <p class="hero-subtitle">Programas de inteligencia artificial aplicada para equipos y organizaciones. Entra un equipo con curiosidad — sale un equipo construyendo sus propias soluciones con IA.</p>
     <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
       <a class="cta-btn cta-accent" href="#escalera">Ver la escalera de programas</a>
-      <a class="cta-btn cta-outline" href="mailto:mara.pronvenzano@gmail.com?subject=Formación%20IA%20para%20nuestra%20organización">Agendar conversación</a>
+      <a class="cta-btn cta-outline mailto-cta" href="#">Agendar conversación</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><div class="number">4</div><div class="label">formatos escalonados</div></div>
@@ -181,14 +212,31 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
     </div>
   </header>
 
+  <!-- ══════════ HERO ACADEMIA ══════════ -->
+  <header class="hero-content hidden-mode" data-mode="academia">
+    <div class="hero-kicker">Una iniciativa de NETI (Argentina) × Futuraria (Perú)</div>
+    <h1 class="hero-heading">IA para acelerar la <em>ciencia</em>, la docencia y la investigación.</h1>
+    <p class="hero-subtitle">Programas de inteligencia artificial aplicada para universidades, centros de investigación y grupos de estudio. Entra un equipo dedicado — sale un equipo publicando, corrigiendo e investigando al ritmo de la IA.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+      <a class="cta-btn cta-accent" href="#escalera">Ver la escalera de programas</a>
+      <a class="cta-btn cta-outline mailto-cta" href="#">Agendar conversación</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="number">4</div><div class="label">formatos escalonados</div></div>
+      <div class="hero-stat"><div class="number">2–24 h</div><div class="label">de 1 sesión a inmersión completa</div></div>
+      <div class="hero-stat"><div class="number">100%</div><div class="label">de los programas terminan con un entregable</div></div>
+      <div class="hero-stat"><div class="number">5</div><div class="label">rutas de investigación con IA</div></div>
+    </div>
+  </header>
+
   <div class="section-divider"></div>
 
-  <!-- MÉTODO -->
+  <!-- MÉTODO (compartido) -->
   <section>
     <div class="section-container">
       <div class="section-label">Cómo enseñamos</div>
       <h2 class="section-title">No dictamos clases. Diseñamos <em>experiencias</em>.</h2>
-      <p class="section-subtitle">Cada programa parte del silabus de tu contexto y se transforma en una experiencia de aprendizaje donde el protagonista es el participante — nosotros acompañamos, él construye.</p>
+      <p class="section-subtitle">Cada programa parte del silabus de tu organización y se transforma en una experiencia de aprendizaje donde el protagonista es el participante — nosotros acompañamos, él construye.</p>
       <div class="metodo-grid">
         <div class="glass-card liquid-glass metodo-card">
           <div class="metodo-num">01</div>
@@ -216,15 +264,13 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
 
   <div class="section-divider"></div>
 
-  <!-- ESCALERA -->
+  <!-- ══════════ ESCALERA NEGOCIOS ══════════ -->
   <section id="escalera">
-    <div class="section-container">
+    <div class="section-container" data-mode="negocios">
       <div class="section-label">La escalera de programas</div>
       <h2 class="section-title">Empieza chico. Escala cuando <em>funcione</em>.</h2>
       <p class="section-subtitle">Cuatro formatos que escalan: una sesión para abrir apetito, programas medianos para construir habilidad, y una inmersión para transformar cómo trabaja un equipo. En todos: entran con algo y salen con otra cosa.</p>
-
       <div class="escalera-grid">
-        <!-- 2h -->
         <div class="glass-card liquid-glass escalera-card e1">
           <div class="esc-nivel">Nivel 1 · Express</div>
           <div class="esc-horas">2 <small>horas · 1 sesión</small></div>
@@ -236,8 +282,6 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
           </div>
           <div class="esc-precio"><div class="p-num">USD 90</div><div class="p-unit">por persona · mín. 25 participantes</div></div>
         </div>
-
-        <!-- 6h -->
         <div class="glass-card liquid-glass escalera-card e2">
           <div class="esc-nivel">Nivel 2 · Fundamentos</div>
           <div class="esc-horas">6 <small>horas · 3 clases</small></div>
@@ -249,8 +293,6 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
           </div>
           <div class="esc-precio"><div class="p-num">USD 240</div><div class="p-unit">por persona · mín. 20 participantes</div></div>
         </div>
-
-        <!-- 8h -->
         <div class="glass-card liquid-glass escalera-card e3" style="position:relative;">
           <div class="esc-badge">Más elegido</div>
           <div class="esc-nivel">Nivel 3 · Proyecto</div>
@@ -263,8 +305,6 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
           </div>
           <div class="esc-precio"><div class="p-num">USD 300</div><div class="p-unit">por persona · mín. 20 participantes</div></div>
         </div>
-
-        <!-- 24h -->
         <div class="glass-card liquid-glass escalera-card e4">
           <div class="esc-nivel">Nivel 4 · Inmersión</div>
           <div class="esc-horas">24 <small>horas · 12 clases</small></div>
@@ -278,12 +318,165 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
         </div>
       </div>
     </div>
+
+    <!-- ══════════ ESCALERA ACADEMIA ══════════ -->
+    <div class="section-container hidden-mode" data-mode="academia">
+      <div class="section-label">La escalera de programas</div>
+      <h2 class="section-title">Empieza chico. Escala cuando <em>funcione</em>.</h2>
+      <p class="section-subtitle">Cuatro formatos que escalan: una sesión para abrir apetito, programas medianos para construir habilidad, y una inmersión para transformar cómo investiga y enseña un equipo. En todos: entran con algo y salen con otra cosa.</p>
+      <div class="escalera-grid">
+        <div class="glass-card liquid-glass escalera-card e1">
+          <div class="esc-nivel">Nivel 1 · Express</div>
+          <div class="esc-horas">2 <small>horas · 1 sesión</small></div>
+          <div class="esc-nombre">ChatGPT y Claude para Docentes e Investigadores</div>
+          <p class="esc-tagline">Para equipos que quieren dejar de oír hablar de IA y empezar a usarla con criterio académico.</p>
+          <div class="esc-io">
+            <div class="io-row"><span class="io-label">Entra</span><p>Curiosidad mezclada con desconfianza: plagio, alucinaciones, citas inventadas.</p></div>
+            <div class="io-row"><span class="io-label out">Sale</span><p>Su cuenta configurada, una biblioteca de prompts académicos y su primera tarea docente automatizada el mismo día.</p></div>
+          </div>
+          <div class="esc-precio"><div class="p-num">USD 90</div><div class="p-unit">por persona · mín. 25 participantes</div></div>
+        </div>
+        <div class="glass-card liquid-glass escalera-card e2">
+          <div class="esc-nivel">Nivel 2 · Fundamentos</div>
+          <div class="esc-horas">6 <small>horas · 3 clases</small></div>
+          <div class="esc-nombre">IA Aplicada a tu Cátedra</div>
+          <p class="esc-tagline">De usar IA de vez en cuando a tener un flujo de trabajo completo dentro de tu docencia.</p>
+          <div class="esc-io">
+            <div class="io-row"><span class="io-label">Entra</span><p>Horas perdidas corrigiendo uno por uno y redactando feedback a mano.</p></div>
+            <div class="io-row"><span class="io-label out">Sale</span><p>Corrección automatizada con criterio, retroalimentación personalizada por alumno y formato APA 7 con citas verificadas.</p></div>
+          </div>
+          <div class="esc-precio"><div class="p-num">USD 240</div><div class="p-unit">por persona · mín. 20 participantes</div></div>
+        </div>
+        <div class="glass-card liquid-glass escalera-card e3" style="position:relative;">
+          <div class="esc-badge">Más elegido</div>
+          <div class="esc-nivel">Nivel 3 · Proyecto</div>
+          <div class="esc-horas">8 <small>horas · 4 clases</small></div>
+          <div class="esc-nombre">Construye tu Asistente Académico</div>
+          <p class="esc-tagline">Cuatro sesiones para pasar de usuario a constructor de herramientas propias.</p>
+          <div class="esc-io">
+            <div class="io-row"><span class="io-label">Entra</span><p>Usa la IA como asistente, pero cada semestre empieza de cero.</p></div>
+            <div class="io-row"><span class="io-label out">Sale</span><p>Un asistente propio funcionando: transcribe sus clases, o un segundo cerebro que documenta y responde con su material — presentado ante el grupo.</p></div>
+          </div>
+          <div class="esc-precio"><div class="p-num">USD 300</div><div class="p-unit">por persona · mín. 20 participantes</div></div>
+        </div>
+        <div class="glass-card liquid-glass escalera-card e4">
+          <div class="esc-nivel">Nivel 4 · Inmersión</div>
+          <div class="esc-horas">24 <small>horas · 12 clases</small></div>
+          <div class="esc-nombre">Inmersión: Semillero IA</div>
+          <p class="esc-tagline">La transformación completa: un grupo que diseña, construye y sostiene sus propias soluciones.</p>
+          <div class="esc-io">
+            <div class="io-row"><span class="io-label">Entra</span><p>Un grupo de investigación con talento, pero dependiente de herramientas que no controla.</p></div>
+            <div class="io-row"><span class="io-label out">Sale</span><p>Soluciones propias en operación + internal champions capaces de formar a otros y escalar la cultura de IA en la institución.</p></div>
+          </div>
+          <div class="esc-precio"><div class="p-num">USD 850</div><div class="p-unit">por persona · mín. 15 participantes</div></div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- EXTRAS -->
-  <section>
+  <!-- RUTAS (solo academia) -->
+  <section data-mode="academia" class="hidden-mode">
+    <div class="section-container">
+      <div class="section-label">IA × Ciencia</div>
+      <h2 class="section-title">Cinco rutas según el momento de tu <em>investigación</em>.</h2>
+      <p class="section-subtitle">Nuestro programa original para el mundo científico-académico: cualquiera de estas rutas se dicta en los formatos de la escalera.</p>
+      <div class="rutas-track">
+        <div class="glass-card liquid-glass ruta-card">
+          <div class="ruta-letter">E</div>
+          <h3>Escribir</h3>
+          <p>Del dato al manuscrito: redacción asistida con IA, sin perder tu voz académica.</p>
+        </div>
+        <div class="rutas-arrow">→</div>
+        <div class="glass-card liquid-glass ruta-card">
+          <div class="ruta-letter">S</div>
+          <h3>Simular</h3>
+          <p>Experimentos y modelos asistidos con IA, sin necesidad de programar.</p>
+        </div>
+        <div class="rutas-arrow">→</div>
+        <div class="glass-card liquid-glass ruta-card">
+          <div class="ruta-letter">P</div>
+          <h3>Publicar</h3>
+          <p>Formato, revistas objetivo y peer review: llegar listo, no a la primera entrega.</p>
+        </div>
+        <div class="rutas-arrow">→</div>
+        <div class="glass-card liquid-glass ruta-card">
+          <div class="ruta-letter">V</div>
+          <h3>Validar</h3>
+          <p>Del paper a la pregunta: ¿esto podría ser un producto o una patente?</p>
+        </div>
+        <div class="rutas-arrow">→</div>
+        <div class="glass-card liquid-glass ruta-card">
+          <div class="ruta-letter">C</div>
+          <h3>Construir</h3>
+          <p>De la idea validada al prototipo: el puente donde la mayoría se frena.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" data-mode="academia"></div>
+
+  <!-- CATÁLOGO (solo academia) -->
+  <section data-mode="academia" class="hidden-mode">
+    <div class="section-container">
+      <div class="section-label">El catálogo</div>
+      <h2 class="section-title">Talleres que ya existen y <em>funcionan</em>.</h2>
+      <p class="section-subtitle">Además de la escalera, estos talleres puntuales se montan sobre cualquier formato — cada uno termina con su propia herramienta construida.</p>
+      <div class="catalogo-cols">
+        <div class="catalogo-col">
+          <h3>Para docentes</h3>
+          <p class="col-sub">Del aula presencial al aula aumentada con IA.</p>
+          <div class="cat-item">
+            <h4>ChatGPT y Claude para profesores <span>NIVEL I</span></h4>
+            <p>Corrige exámenes con criterio, automatiza presentaciones de clase y extrae información de PDFs con fuentes bibliográficas reales.</p>
+          </div>
+          <div class="cat-item">
+            <h4>ChatGPT y Claude para profesores <span>NIVEL II</span></h4>
+            <p>Corrección completa automatizada, retroalimentación personalizada para cada alumno y formateo APA 7 con citas.</p>
+          </div>
+          <div class="cat-item">
+            <h4>Asistente que transcribe tus clases</h4>
+            <p>Explicas una vez y el contenido queda: montas un asistente que transcribe cada clase automáticamente y lo almacena consultable.</p>
+          </div>
+          <div class="cat-item">
+            <h4>Segundos cerebros para profesores universitarios</h4>
+            <p>Tu material documentado, ordenado y consultable — por vos y por la IA. Se acabó empezar de cero cada semestre.</p>
+          </div>
+        </div>
+        <div class="catalogo-col">
+          <h3>Para extensión y emprendimiento</h3>
+          <p class="col-sub">Para estudiantes, egresados y programas de emprendimiento universitario.</p>
+          <div class="cat-item">
+            <h4>Sitios web hechos con IA</h4>
+            <p>Vibecodean su propio sitio web: estructura clara, estética profesional y publicado en internet el mismo día.</p>
+          </div>
+          <div class="cat-item">
+            <h4>Sitios web y bases de datos con IA <span>NIVEL II</span></h4>
+            <p>Conectan una base de datos real para capturar interesados y miden todo con Google Analytics.</p>
+          </div>
+          <div class="cat-item">
+            <h4>SEO, GEO y AEO con IA</h4>
+            <p>Auditan y optimizan su web para aparecer en Google y en las respuestas de ChatGPT y Claude.</p>
+          </div>
+          <div class="cat-item">
+            <h4>Tu propio community manager con IA</h4>
+            <p>Un agente entrenado con la información del negocio: atiende 24/7 y no deja comentario sin responder.</p>
+          </div>
+          <div class="cat-item">
+            <h4>Tu propio diseñador con IA</h4>
+            <p>Redacción, diseño y publicación de contenido en redes automatizados — marca constante sin agencia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" data-mode="academia"></div>
+
+  <!-- ══════════ EXTRAS NEGOCIOS ══════════ -->
+  <section data-mode="negocios">
     <div class="section-container">
       <div class="section-label">Y después de la escalera</div>
       <h2 class="section-title">Esto también <em>podemos</em> hacer juntos.</h2>
@@ -317,22 +510,67 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
     </div>
   </section>
 
+  <!-- ══════════ EXTRAS ACADEMIA ══════════ -->
+  <section data-mode="academia" class="hidden-mode">
+    <div class="section-container">
+      <div class="section-label">Y más allá</div>
+      <h2 class="section-title">Esto también <em>podemos</em> hacer juntos.</h2>
+      <p class="section-subtitle">La escalera es el punto de partida. Una vez que la institución entra, hay todo un camino adelante.</p>
+      <div class="extra-grid">
+        <div class="glass-card liquid-glass extra-card">
+          <h3><span>→</span>Programas por facultad</h3>
+          <p>Versiones especializadas de la escalera para cada facultad o área — con casos, datos y lenguaje de su disciplina.</p>
+        </div>
+        <div class="glass-card liquid-glass extra-card">
+          <h3><span>→</span>Acompañamiento para comisiones de IA</h3>
+          <p>Diagnóstico, roadmap y pilotos para instituciones que están definiendo su política y postura frente a la IA.</p>
+        </div>
+        <div class="glass-card liquid-glass extra-card">
+          <h3><span>→</span>Mentoría para semilleros</h3>
+          <p>Acompañamiento a grupos de investigación que ya construyeron y necesitan llevar sus herramientas al siguiente nivel.</p>
+        </div>
+        <div class="glass-card liquid-glass extra-card">
+          <h3><span>→</span>Formación de facilitadores internos</h3>
+          <p>Certificamos a docentes de la propia institución para replicar los programas — la capacidad queda en casa.</p>
+        </div>
+        <div class="glass-card liquid-glass extra-card">
+          <h3><span>→</span>Bootcamps intensivos</h3>
+          <p>Formatos de 1 a 3 días de inmersión total para resolver un reto concreto de la institución en tiempo real.</p>
+        </div>
+        <div class="glass-card liquid-glass extra-card">
+          <h3><span>→</span>Licenciamiento de programas</h3>
+          <p>Programas completos con todo el material, para universidades y gremios que quieren dictarlos con su marca.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="section-divider"></div>
 
-  <!-- INVERSIÓN -->
+  <!-- ══════════ INVERSIÓN ══════════ -->
   <section id="inversion">
     <div class="section-container">
       <div class="section-label">Inversión</div>
       <h2 class="section-title">Un orden de magnitud, <em>no una camisa de fuerza</em>.</h2>
       <p class="section-subtitle">Los valores de referencia por cohorte — el número final lo construimos juntos.</p>
 
-      <table class="inv-table">
+      <table class="inv-table" data-mode="negocios">
         <thead><tr><th>Programa</th><th>Formato</th><th>Inversión por persona</th><th>Cohorte completa (mín.)</th></tr></thead>
         <tbody>
           <tr><td>Primer Contacto con la IA</td><td>2 h · 1 sesión</td><td class="pv">USD 90</td><td>USD 2,250 (25 pax)</td></tr>
           <tr><td>IA Aplicada a tu Trabajo</td><td>6 h · 3 clases</td><td class="pv">USD 240</td><td>USD 4,800 (20 pax)</td></tr>
           <tr><td>Construye con IA</td><td>8 h · 4 clases</td><td class="pv">USD 300</td><td>USD 6,000 (20 pax)</td></tr>
           <tr><td>Inmersión IA para Equipos</td><td>24 h · 12 clases</td><td class="pv">USD 850</td><td>USD 12,750 (15 pax)</td></tr>
+        </tbody>
+      </table>
+
+      <table class="inv-table hidden-mode" data-mode="academia">
+        <thead><tr><th>Programa</th><th>Formato</th><th>Inversión por persona</th><th>Cohorte completa (mín.)</th></tr></thead>
+        <tbody>
+          <tr><td>ChatGPT y Claude para Docentes e Investigadores</td><td>2 h · 1 sesión</td><td class="pv">USD 90</td><td>USD 2,250 (25 pax)</td></tr>
+          <tr><td>IA Aplicada a tu Cátedra</td><td>6 h · 3 clases</td><td class="pv">USD 240</td><td>USD 4,800 (20 pax)</td></tr>
+          <tr><td>Construye tu Asistente Académico</td><td>8 h · 4 clases</td><td class="pv">USD 300</td><td>USD 6,000 (20 pax)</td></tr>
+          <tr><td>Inmersión: Semillero IA</td><td>24 h · 12 clases</td><td class="pv">USD 850</td><td>USD 12,750 (15 pax)</td></tr>
         </tbody>
       </table>
 
@@ -344,17 +582,17 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
 
   <div class="section-divider"></div>
 
-  <!-- QUIÉNES SOMOS -->
+  <!-- QUIÉNES SOMOS (compartido) -->
   <section id="quienes">
     <div class="section-container">
       <div class="section-label">Quiénes somos</div>
       <h2 class="section-title">Dos laboratorios, <em>una misma obsesión</em>.</h2>
-      <p class="section-subtitle">IA × Ciencia nace de la unión de NETI y Futuraria para acercar la inteligencia artificial aplicada a equipos y organizaciones de Latinoamérica.</p>
+      <p class="section-subtitle">IA × Ciencia nace de la unión de NETI y Futuraria para acercar la inteligencia artificial aplicada a la ciencia, la docencia, la investigación y los equipos de Latinoamérica.</p>
       <div class="quienes-grid">
         <div class="glass-card liquid-glass quienes-card">
           <div class="quienes-logo">NETI</div>
           <div class="quienes-sub">Argentina</div>
-          <p class="quienes-desc">Laboratorio de innovación y educación en IA fundado por Mara Pronvenzano. Impulsa programas de inteligencia artificial aplicada para científicos, profesionales y organizaciones.</p>
+          <p class="quienes-desc">Laboratorio de innovación y educación en IA fundado por Mara Pronvenzano. Impulsa programas de inteligencia artificial aplicada para científicos, docentes, profesionales y organizaciones.</p>
         </div>
         <div class="glass-card liquid-glass quienes-card">
           <div class="quienes-logo">Futuraria</div>
@@ -375,11 +613,13 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
     </div>
   </section>
 
-  <!-- CTA FINAL -->
+  <!-- ══════════ CTA FINAL ══════════ -->
   <section class="cta-section">
-    <h2>Empecemos por <em style="color:var(--accent); font-style:italic;">una conversación</em>.</h2>
-    <p>Sin compromiso y sin PDF eternos: 30 minutos para entender tu contexto y proponerte el formato exacto.</p>
-    <a class="cta-btn cta-accent" style="font-size:1rem; padding:14px 36px;" href="mailto:mara.pronvenzano@gmail.com?subject=Formación%20IA%20para%20nuestra%20organización">Agendar conversación</a>
+    <h2 data-mode="negocios">Empecemos por <em style="color:var(--accent); font-style:italic;">una conversación</em>.</h2>
+    <h2 data-mode="academia" class="hidden-mode">Empecemos por <em style="color:var(--accent); font-style:italic;">una conversación</em>.</h2>
+    <p data-mode="negocios">Sin compromiso y sin PDF eternos: 30 minutos para entender tu contexto y proponerte el formato exacto.</p>
+    <p data-mode="academia" class="hidden-mode">Sin compromiso y sin PDF eternos: 30 minutos para entender el contexto de su institución y proponerle el formato exacto.</p>
+    <a class="cta-btn cta-accent mailto-cta" style="font-size:1rem; padding:14px 36px;" href="#">Agendar conversación</a>
   </section>
 
   <footer>
@@ -387,5 +627,32 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
     ciencia.futuraria.com
   </footer>
 </div>
+
+<script>
+const MAILTO = {
+  negocios: 'mailto:mara.pronvenzano@gmail.com?subject=Formaci%C3%B3n%20IA%20para%20nuestra%20organizaci%C3%B3n',
+  academia: 'mailto:mara.pronvenzano@gmail.com?subject=IA%20para%20acelerar%20la%20ciencia%20en%20nuestra%20instituci%C3%B3n'
+};
+
+function setMode(mode) {
+  document.querySelectorAll('[data-mode]').forEach(el => {
+    if (el.classList.contains('mode-opt')) return;
+    el.classList.toggle('hidden-mode', el.dataset.mode !== mode);
+  });
+  document.getElementById('opt-negocios').classList.toggle('active', mode === 'negocios');
+  document.getElementById('opt-academia').classList.toggle('active', mode === 'academia');
+  document.querySelectorAll('.mailto-cta, #nav-cta').forEach(a => a.href = MAILTO[mode]);
+  document.title = mode === 'academia'
+    ? 'IA para Acelerar la Ciencia — IA × Ciencia en Colombia'
+    : 'IA × Ciencia Colombia — Formación en IA que termina con algo hecho';
+  try { localStorage.setItem('iacx-mode', mode); } catch (e) {}
+}
+
+(function () {
+  let saved = null;
+  try { saved = localStorage.getItem('iacx-mode'); } catch (e) {}
+  setMode(saved === 'academia' ? 'academia' : 'negocios');
+})();
+</script>
 </body>
 </html>
