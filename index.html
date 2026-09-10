@@ -154,11 +154,14 @@ nav { position: relative; z-index: 20; padding: 24px; }
 .inv-note strong { color: #fff; }
 
 /* ── Quiénes somos ── */
-.quienes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.quienes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .quienes-card { border-radius: 20px; padding: 36px; text-align: center; }
 .quienes-sub { font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 16px; }
 .quienes-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
 .quienes-logo { font-family: var(--font-display); font-size: 1.6rem; margin-bottom: 10px; }
+a.quienes-logo { color: #fff; text-decoration: none; display: inline-block; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), text-shadow 0.3s ease; }
+a.quienes-logo:hover { transform: scale(1.08); text-shadow: 0 0 14px rgba(16,185,129,0.5); color: var(--accent); }
+.quienes-grid { grid-template-rows: auto auto; }
 
 /* ── CTA ── */
 .cta-section { text-align: center; padding: 140px 24px; }
@@ -174,6 +177,7 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
 }
 @media (max-width: 600px) {
   section { padding: 60px 16px; }
+  .quienes-grid { grid-template-columns: 1fr; }
   .escalera-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 24px; }
   .nav-kicker { display: none; }
@@ -594,22 +598,22 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
       <p class="section-subtitle">IA × Ciencia nace de la unión de NETI y Futuraria para acercar la inteligencia artificial aplicada a la ciencia, la docencia, la investigación y los equipos de Latinoamérica.</p>
       <div class="quienes-grid">
         <div class="glass-card liquid-glass quienes-card">
-          <div class="quienes-logo">NETI</div>
+          <a class="quienes-logo" href="https://noestatodoinventado.com/" target="_blank" rel="noopener">NETI</a>
           <div class="quienes-sub">Argentina</div>
           <p class="quienes-desc">Laboratorio de innovación y educación en IA fundado por Mara Pronvenzano. Impulsa programas de inteligencia artificial aplicada para científicos, docentes, profesionales y organizaciones.</p>
         </div>
         <div class="glass-card liquid-glass quienes-card">
-          <div class="quienes-logo">Futuraria</div>
+          <a class="quienes-logo" href="https://futuraria.com" target="_blank" rel="noopener">Futuraria</a>
           <div class="quienes-sub">Perú</div>
           <p class="quienes-desc">Estudio de automatización e IA fundado por Renzo Pérez Bartra. Diseña y construye sistemas, marcas y experiencias de aprendizaje con tecnología.</p>
         </div>
         <div class="glass-card liquid-glass quienes-card">
-          <div class="quienes-logo">Mara</div>
+          <a class="quienes-logo" href="https://noestatodoinventado.com/" target="_blank" rel="noopener">Mara</a>
           <div class="quienes-sub">Dirección académica</div>
           <p class="quienes-desc">Mara Pronvenzano, fundadora de NETI. Diseña experiencias de aprendizaje donde el participante construye — no asiste. Lidera la vertical educativa de IA × Ciencia.</p>
         </div>
         <div class="glass-card liquid-glass quienes-card">
-          <div class="quienes-logo">Renzo</div>
+          <a class="quienes-logo" href="https://perezbartra.com" target="_blank" rel="noopener">Renzo</a>
           <div class="quienes-sub">Dirección de producto</div>
           <p class="quienes-desc">Renzo Pérez Bartra, fundador de Futuraria. De la marca al código: convierte cada programa en una experiencia memorable y escalable.</p>
         </div>
