@@ -38,6 +38,11 @@ body { background: #000; color: #fff; font-family: var(--font-body); line-height
   -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
 }
 
+/* ── Manifiesto ── */
+.manifiesto { max-width: 60rem; margin: 0 auto; padding: 90px 24px 70px; text-align: center; position: relative; z-index: 5; }
+.manifiesto p { font-family: var(--font-display); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.3rem); line-height: 1.35; color: rgba(255,255,255,0.85); letter-spacing: -0.01em; }
+.manifiesto p::before { content: ''; display: block; width: 48px; height: 2px; background: var(--accent); margin: 0 auto 28px; border-radius: 2px; }
+
 /* ── Sections ── */
 section { padding: 100px 24px; position: relative; }
 .section-container { max-width: 72rem; margin: 0 auto; }
@@ -177,6 +182,7 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
 }
 @media (max-width: 600px) {
   section { padding: 60px 16px; }
+  .manifiesto { padding: 50px 16px 30px; }
   .quienes-grid { grid-template-columns: 1fr; }
   .escalera-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 24px; }
@@ -236,6 +242,14 @@ footer { padding: 60px 24px; color: rgba(255,255,255,0.3); font-size: 0.8rem; bo
       <div class="hero-stat"><div class="number">5</div><div class="label">rutas de investigación con IA</div></div>
     </div>
   </header>
+
+  <!-- FRANJA MANIFIESTO -->
+  <div class="manifiesto" data-mode="negocios">
+    <p>“No son cursos enlatados: cada programa se diseña sobre tu contexto, tu gente y tus problemas — y termina con algo que sí te sirve.”</p>
+  </div>
+  <div class="manifiesto hidden-mode" data-mode="academia">
+    <p>“No son cursos enlatados: cada programa se diseña sobre tu facultad, tus semilleros y tus datos — y termina con algo que sí sirve.”</p>
+  </div>
 
   <div class="section-divider"></div>
 
